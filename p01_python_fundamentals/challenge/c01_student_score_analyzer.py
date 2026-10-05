@@ -57,3 +57,49 @@ Challenge:
 What should happen if the user enters a score below 0 or above 100?
 
 """
+
+
+
+# Ask the user to enter the student's name.
+student_name = input('Enter your name: ')
+
+# Ask for scores in 5 subjects: [Bangla, English, Mathematics, Science, ICT]
+subjects = [ 'Bangla', 'English', 'Mathematics', 'Science', 'ICT']
+length = len(subjects)
+
+scores = [0, 0, 0, 0, 0]
+hightest_inx = 0
+lowest_inx = 0
+total_score = 0
+avg_score = 0
+
+for i in range(length):
+  score = -1
+  while(score < 0 or score > 100):
+    score = int(input(f'Enter score for {subjects[i]}: '))
+  scores[i] = score
+  
+  if(scores[hightest_inx] < score):
+    hightest_inx = i
+  if (scores[lowest_inx] > score):
+    lowest_inx = i
+  
+  total_score += score
+
+  
+avg_score = total_score/length
+
+
+
+# Display
+print('\nName: '+ student_name)
+
+for i in range(length):
+  print(f"{subjects[i]}: {scores[i]}")
+
+print(f"\nTotal score: {total_score} \nAverage score: {avg_score} \nHighest score: {scores[hightest_inx]} \nLowest score: {scores[lowest_inx]}\n")
+
+if(avg_score >= 40):
+  print('Status: PASS')
+else:
+  print('Status: FAILED')
